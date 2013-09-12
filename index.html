@@ -1,0 +1,97 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>Be The Web</title>
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Be The Web</h1>
+    </header>
+    <div id="container">
+      <p class="tagline"></p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/kayvannj/BeTheWeb/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/kayvannj/BeTheWeb/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/kayvannj/BeTheWeb" class="code">View Be The Web on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <p><strong>Be The Web is an opensource project that will help everyone publish a web server regardless of having Valid or Invalid, Static or Dynamic IP address.</strong></p>
+
+<p>Moto: enabling every one to run their own web server from home.</p>
+
+<h2>
+<a name="current-web-structure" class="anchor" href="#current-web-structure"><span class="octicon octicon-link"></span></a>Current web structure:</h2>
+
+<p>In order for running your own web server, you need to have a valid static IP address, Or use DDNS with a valid dynamic ip address.</p>
+
+<h3>
+<a name="problems" class="anchor" href="#problems"><span class="octicon octicon-link"></span></a>Problems:</h3>
+
+<ul>
+<li>Many ISPs (Internet Service Providers) don't distribute valid IP Or they charge you for one</li>
+<li>Some ISPs ban you from running your web server.</li>
+<li>DDNS services are not free for using your own domain.</li>
+<li>You are not Alive on the back of a router. (No one can hear you)</li>
+</ul><h2>
+<a name="betheweb-solution" class="anchor" href="#betheweb-solution"><span class="octicon octicon-link"></span></a>BeTheWeb solution:</h2>
+
+<p>BeTheWeb will be a server which also has a native client (java based). It will act as a DDNS for those with valid dynamic IP and will be free of charge if they also keep the client running on their server. Clients can make tunnels to server or each other for transferring the data. </p>
+
+<h3>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example:</h3>
+
+<p>Now assuming there is a DNS request for foo.com. 
+Since foo.com has our server as its name server, we get the request on our server and then look up the client id on our DB. We also find another <strong>close by</strong> and <strong>fast</strong> client that has a valid IP. Then we command those to clients to make a tunnel to each other and finally send the IP of the valid client back to the user who send the request. Then user connects to our client (on the server that has a valid IP) and the client will re-route the packages to the targeted client (with no valid IP). Thus we eliminate the over loading of our server. And packages are being transferred through our tunnel.</p>
+
+<h2>
+<a name="how-to-contribute" class="anchor" href="#how-to-contribute"><span class="octicon octicon-link"></span></a>How to Contribute:</h2>
+
+<p>Current design is very abstract and we need help to figure out the way to implement this system. Also we need developers for these categories: Web Backend, Web Frontend, Java Client, Java UI, ...</p>
+
+<p>This project will work on Donation base and if we can lower the process pressure on our server it will not require huge budget to run.</p>
+
+<p>To get involved or comment please click <a href="https://docs.google.com/forms/d/1OEaiu9NfiN5SZ5aDYgTDSlVHd30I98Ojfga9OvxZiuY/viewform">here</a>.</p>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/kayvannj" class="avatar"><img src="https://1.gravatar.com/avatar/4fb7df4c931a9ab6d89d04982740e1e2?d=https%3A%2F%2Fidenticons.github.com%2F364055996dbb70dfb0f34d1c75a9580b.png&amp;s=30" width="48" height="48"/></a> <a href="https://github.com/kayvannj">kayvannj</a> maintains <a href="https://github.com/kayvannj/BeTheWeb">Be The Web</a></p>
+
+
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br/>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/kayvannj/BeTheWeb/tarball/master" class="tar">tar</a><a href="https://github.com/kayvannj/BeTheWeb/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+  
+</body>
+</html>
