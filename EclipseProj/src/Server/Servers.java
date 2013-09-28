@@ -1,5 +1,6 @@
 package Server;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,7 +23,7 @@ import javax.swing.JTextField;
  * If you ran it from a console window with the "java" interpreter, Ctrl+C
  * generally will shut it down.
  */
-public class CapitalizeServer {
+public class Servers {
 
 	private JFrame frame = new JFrame("Capitalize Server Side");
 	private JButton sendReq = new JButton();

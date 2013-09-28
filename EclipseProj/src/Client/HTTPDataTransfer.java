@@ -1,23 +1,26 @@
+package Client;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
+import javax.xml.soap.Text;
+
 public class HTTPDataTransfer {
 
-	public static void main(String[] args) {
-
+	public String transferData() {
+		String input = new String("");
+		String inputLine;
 		try {
-		  String inputLine;
 		  BufferedReader in = getLocalHTTPData("8080");
 		while ((inputLine = in.readLine()) != null)
-			System.out.println(inputLine);
-		in.close();
-			
+			input = input+inputLine;
+		in.close();	
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return input;
 	}
 	
 	private static BufferedReader getLocalHTTPData(String port) throws IOException{
