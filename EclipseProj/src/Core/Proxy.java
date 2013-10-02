@@ -9,17 +9,16 @@ import java.util.HashMap;
 
 import javax.xml.stream.events.StartDocument;
 
+import BaseClasses.BaseClass;
 import Util.Commands;
 import Util.Logger;
-
-import BaseClasses.BaseClass;
 
 
 public class Proxy extends BaseClass{
 
 	private static String HELLO = "<!DOCTYPE html><html><body><h1>Hello</h1><p>this is comming from server.</p></body></html>";
 			 
-	private static int DEFAULT_PORT = 8090;
+	private static int DEFAULT_PORT = 80;
 	ServerSocket listener;
 	int portToListen;
 	Thread listenerThread;
