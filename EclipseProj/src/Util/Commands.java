@@ -1,5 +1,5 @@
 package Util;
 
 public enum Commands {
-	START, STOP, QUIT, SEND
+	START, STOP, QUIT, SEND, CONNECT
 }

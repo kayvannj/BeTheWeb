@@ -3,6 +3,12 @@ package BaseClasses;
 import java.net.Socket;
 import java.util.HashMap;
 
+/**
+ * @author Kayvan
+ * Listeners will listen on two ports (one for other client applications and the other for incoming user connections)
+ * and when they have an incoming connection for an already existing client, they will create a ProxyThread and pass
+ * the sockets to it so it can manage the communication among those two.
+ */
 public interface Listener {
 	
 	final HashMap<String, Socket> ClientConnections = new HashMap<String, Socket>();

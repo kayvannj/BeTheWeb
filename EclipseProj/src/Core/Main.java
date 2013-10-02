@@ -14,7 +14,7 @@ public class Main extends BaseClass {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-		print("Welcome ... (use '"+Commands.QUIT+"' to exit)");
+		print("(use '"+Commands.QUIT+"' to exit)");
 		String userInput = "";
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
@@ -36,6 +36,11 @@ public class Main extends BaseClass {
 			case START:
 				HttpListener myListener = new HttpListener();
 				myListener.run();
+				break;
+			case CONNECT:
+				if (argument.isEmpty()) {
+					print("");
+				}
 				break;
 			case STOP:
 				
