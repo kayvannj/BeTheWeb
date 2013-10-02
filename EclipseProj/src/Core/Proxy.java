@@ -5,9 +5,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.HashMap;
-
-import javax.xml.stream.events.StartDocument;
 
 import BaseClasses.BaseClass;
 import Util.Commands;
@@ -26,48 +23,7 @@ public class Proxy extends BaseClass{
 	protected BufferedReader datain;
 	protected PrintWriter dataout;
 
-	/**
-	 * @param args
-	 * @throws IOException 
-	 */
-	public static void main(String[] args) throws IOException {
-		print("Welcome ... (use '"+Commands.QUIT+"' to exit)");
-		String userInput = "";
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		myProxy = new Proxy(DEFAULT_PORT);
-		while (!userInput.equals(Commands.QUIT)) {
-			userInput = br.readLine();
-			String command = "";
-			String argument = "";
-			String[] inputArray = userInput.split(" ");
-			if (inputArray.length==1) {
-				command = inputArray[0].toUpperCase();
-			}else if (inputArray.length==2) {
-				command = inputArray[0].toUpperCase();
-				argument = inputArray[1];
-			}else{
-				print("Sorry, I couldn't undrestand your command");
-			}
 
-			switch (Commands.valueOf(command)) {
-			case START:
-				myProxy.start();
-				break;
-			case STOP:
-				myProxy.stop();
-				break;
-			case SEND:
-				myProxy.send();
-				break;
-			case QUIT:
-				break;
-			default:
-				print("Bad Command");
-				break;
-			}
-			
-		}
-	}
 	
 	private void send() {
 		dataout.print(HELLO);
