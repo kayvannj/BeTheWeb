@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
-import java.util.Map;
 
 import BaseClasses.BaseClass;
 
@@ -80,6 +79,10 @@ public class HttpListener extends BaseClass implements BaseClasses.Listener, Run
 		
 		try {
 			BufferedReader socketDataReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+			/*while(!socketDataReader.ready()){
+				System.out.print(".");
+			}
+			print(" Ready");*/
 			String packetData = socketDataReader.readLine();
 			while(!packetData.isEmpty()){
 				print(packetData);
@@ -91,6 +94,7 @@ public class HttpListener extends BaseClass implements BaseClasses.Listener, Run
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			print("Error Parsing the key");
 			e.printStackTrace();
 		}
 		return "-1";
@@ -99,7 +103,13 @@ public class HttpListener extends BaseClass implements BaseClasses.Listener, Run
 	@Override
 	public void createProxy(Socket userSocket) {
 		// TODO parse the user's socket, check if client exists
-		print("new user to connect");
+		String key = parseKey(userSocket);
+		if (clientConnections.containsKey(key)) {
+			Proxy p = new Proxy(clientConnections.get(key),userSocket);
+			p.run();
+			print("new user connected.");
+		}
+		
 	}
 
 	@Override

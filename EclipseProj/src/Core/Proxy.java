@@ -11,76 +11,51 @@ import Util.Commands;
 import Util.Logger;
 
 
-public class Proxy extends BaseClass{
-
-	private static String HELLO = "<!DOCTYPE html><html><body><h1>Hello</h1><p>this is comming from server.</p></body></html>";
-			 
-	private static int DEFAULT_PORT = 80;
-	ServerSocket listener;
-	int portToListen;
-	Thread listenerThread;
-	private static Proxy myProxy;
-	protected BufferedReader datain;
-	protected PrintWriter dataout;
-
+public class Proxy extends BaseClass implements Runnable{
 
 	
-	private void send() {
-		dataout.print(HELLO);
-		dataout.flush();
-		print("data Sent");
+
+	protected BufferedReader cDatain;
+	protected PrintWriter cDataout;
+	protected BufferedReader uDatain;
+	protected PrintWriter uDataout;
+
+	public Proxy(Socket clientSocket, Socket userSocket) {
+		try {
+			cDatain = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+			uDatain = new BufferedReader(new InputStreamReader(userSocket.getInputStream()));
+			cDataout = new PrintWriter(clientSocket.getOutputStream(),true);
+			uDataout = new PrintWriter(userSocket.getOutputStream(),true);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			print("Couldnt attach readers and writers");
+			e.printStackTrace();
+		}
+		
 	}
 
-	/**
-	 * Initializes new proxy server 
-	 * @param portToListen
-	 */
-	public Proxy(final int portToListen) {
-		listenerThread = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-
-				try {
-					listener = new ServerSocket(portToListen);
-					Logger.log("ServerSocket listening on port: "+portToListen);
-					print("Starting to listen on "+portToListen);
-					Socket socket = listener.accept();
-					print("Proxy: got connected to "+socket.getInetAddress());
-					print("-----------Data From Connection-------------");
-					datain = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-					dataout = new PrintWriter(socket.getOutputStream(),true);
-					String socketInput = datain.readLine();
-					while (!socketInput.isEmpty()) {
-						
-						print(socketInput);
-						socketInput = datain.readLine();
-					}
-					
-				} catch (IOException e) {
-					Logger.log("Failed to open ServerSocket on port: "+portToListen);
+	
+	@Override
+	public void run() {
+		while(true){
+			try{
+			
+				String userSocketInput = uDatain.readLine();
+				while (!userSocketInput.isEmpty()) {
+					cDataout.print(userSocketInput);
+					userSocketInput = uDatain.readLine();
 				}
-
+				cDataout.flush();
+				String ClientSocketInput = cDatain.readLine();
+				while (!ClientSocketInput.isEmpty()) {
+					uDataout.print(ClientSocketInput);
+					ClientSocketInput = cDatain.readLine();
+				}
+				uDataout.flush();
+				
+			}catch(Exception e){
+				
 			}
-		});
-		
+		}
 	}
-	
-	/**
-	 * Starts the proxy server
-	 * @return status (error or done)
-	 */
-	private String start(){
-		listenerThread.start();
-		return "";
-	}
-	
-	
-	
-	private String stop(){
-		
-		print("Stopped listening");
-		return "";
-	}
-
 }
